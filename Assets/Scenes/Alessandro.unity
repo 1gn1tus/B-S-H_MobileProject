@@ -410,6 +410,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2010581496, guid: 35cf8d97c5f3047fc954621c8d60428a, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1767118793623522120, guid: 35cf8d97c5f3047fc954621c8d60428a, type: 3}
       propertyPath: ProjectileSpeed
       value: 15
@@ -477,6 +481,18 @@ PrefabInstance:
     - target: {fileID: 1767118793623522122, guid: 35cf8d97c5f3047fc954621c8d60428a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767118793623522123, guid: 35cf8d97c5f3047fc954621c8d60428a, type: 3}
+      propertyPath: lerp
+      value: 0.7355
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767118793623522123, guid: 35cf8d97c5f3047fc954621c8d60428a, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767118793623522123, guid: 35cf8d97c5f3047fc954621c8d60428a, type: 3}
+      propertyPath: moveTime
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 1767118793623522124, guid: 35cf8d97c5f3047fc954621c8d60428a, type: 3}
       propertyPath: m_Name

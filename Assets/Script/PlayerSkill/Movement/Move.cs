@@ -2,33 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour
+public class Move : MonoBehaviour,IinputProvider
 {
-    private IInputReceiver inputReceiver;
-    private Vector3 up = Vector3.up;
-    private bool isTouchingTheScreen;
-    
+    private Touch touch;
+    private Rigidbody2D rigidbody2;
+    private const float lerp = 0.7355f;
+    [System.NonSerialized] public float speedMagnitude;
+
     private void Awake()
     {
-        inputReceiver = GameObject.FindObjectOfType<IInputReceiver>();
+        rigidbody2 = this.gameObject.GetComponent<Rigidbody2D>();
+        speedMagnitude = PlayerSpeed();
     }
-
     private void Update()
     {
-        #region touchScreen
         if (Input.touchCount > 0)
         {
-            isTouchingTheScreen = true;
+           touch = Input.GetTouch(0);
+           if(touch.phase == TouchPhase.Moved)
+           {
+                this.gameObject.transform.position = Vector3.Lerp(this.transform.position, touch.deltaPosition, lerp * Time.deltaTime); //new Vector3(transform.position.x + touch.deltaPosition.x * speed * Time.deltaTime, transform.position.y + touch.deltaPosition.y * speed * Time.deltaTime, 0);
+           }
         }
+
         else
         {
-            isTouchingTheScreen = false;
+            rigidbody2.velocity = Vector3.zero;
         }
-        #endregion
+    }
 
-        /*if ()
-        {
-            this.gameObject.transform.Translate(inputReceiver.Direction(up));
-        }*/
+    public float PlayerSpeed()
+    {
+        return this.rigidbody2.velocity.magnitude;// return this.speed
     }
 }
