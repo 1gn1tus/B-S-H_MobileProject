@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1767118793623522125}
   - component: {fileID: 1767118793623522123}
   - component: {fileID: 1767118793623522120}
+  - component: {fileID: 1753811094}
   - component: {fileID: 5051840645599949275}
   - component: {fileID: 2010581496}
   m_Layer: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1767118793623522124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.65, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1767118794986933352}
   m_Father: {fileID: 0}
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
+  m_Color: {r: 0.30054832, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb0d867bd3dd4764bd985f8cfe8ca60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Touchspeed: 50
 --- !u!114 &1767118793623522120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,10 +113,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf9364c8d99847459db84befbe42e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 0.1
-  speed: 15
-  projectile: {fileID: 1526211757461331351, guid: 0d92d702842534d99af36ff2a8dc9d75, type: 3}
+  projectileSpawnRate: 0.1
+  ProjectileSpeed: 15
+  projectile_Prefab: {fileID: 1526211757461331351, guid: 0d92d702842534d99af36ff2a8dc9d75, type: 3}
   shootingSource: {fileID: 1767118794986933355}
+--- !u!114 &1753811094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767118793623522124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a4c7953771e43f2a8d1c234582d9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHp: 10
+  test: 0
 --- !u!61 &5051840645599949275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,10 +174,10 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1767118794986933355
 GameObject:
   m_ObjectHideFlags: 0

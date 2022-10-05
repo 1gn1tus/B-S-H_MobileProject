@@ -6,10 +6,19 @@ using UnityEngine;
 
 public class ButtonsFunctions : MonoBehaviour
 {
-    public GameObject textObject;
+    #region movementInput
+
+    public GameObject textInputMode;
     private string inputModeText;
     private bool touchMode = false;
+
+    #endregion
+
+    #region ref
+
     private Move move;
+
+    #endregion
 
     private void Start()
     {
@@ -22,7 +31,7 @@ public class ButtonsFunctions : MonoBehaviour
         {
             touchMode = true;
             inputModeText = "TouchOverFollow";
-            textObject.GetComponent<Text>().text = inputModeText;
+            textInputMode.GetComponent<Text>().text = inputModeText;
             move.checkMovement = 1;
 
         }
@@ -30,7 +39,7 @@ public class ButtonsFunctions : MonoBehaviour
         { 
             touchMode = false;
             inputModeText = "TouchFollow";
-            textObject.GetComponent<Text>().text = inputModeText;
+            textInputMode.GetComponent<Text>().text = inputModeText;
             move.checkMovement = 0;
         }
     }

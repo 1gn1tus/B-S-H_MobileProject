@@ -30,7 +30,7 @@ public class AutomateShooting : MonoBehaviour
     private IEnumerator ProjectileSpawn()
     {
         yield return new WaitForSeconds(projectileSpawnRate);
-        Instantiate(projectile_Prefab, shootingSource.transform.position, projectile_Prefab.transform.rotation);
+        GameObject projectileObject = Instantiate(projectile_Prefab, shootingSource.transform.position, projectile_Prefab.transform.rotation,shootingSource.transform);
         canSpawn = true;
      }
 }

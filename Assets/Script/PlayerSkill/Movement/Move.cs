@@ -7,9 +7,9 @@ public class Move : MonoBehaviour,IinputProvider
     #region Movement
 
     private Touch touch;
-    private Rigidbody2D rigidbody2;
-    private const float lerp = 0.7355f;
-    private Vector2 overTouch = new Vector2(0, 0.5f);// const
+    private Rigidbody2D rigidbody2d;
+    private float overTouch = 0.5f;
+    [Range(30,100)]public float Touchspeed;
    
     #endregion
 
@@ -19,9 +19,15 @@ public class Move : MonoBehaviour,IinputProvider
 
     #endregion
 
+    #region speed
+    private float currentSpeed;
+    private float maxSpeed;
+    #endregion
+
     private void Awake()
     {
-        rigidbody2 = this.gameObject.GetComponent<Rigidbody2D>();
+        rigidbody2d = this.gameObject.GetComponent<Rigidbody2D>();
+        maxSpeed = Touchspeed;
     }
     private void Update()
     {
@@ -31,16 +37,22 @@ public class Move : MonoBehaviour,IinputProvider
 
                 if (Input.touchCount > 0)
                 {
+                    currentSpeed = PlayerSpeed();
                     touch = Input.GetTouch(0);
+                    Vector3 screenToWorld = Camera.main.ScreenToWorldPoint(touch.position);
                     if (touch.phase == TouchPhase.Moved)
                     {
-                        this.gameObject.transform.position = Vector3.Lerp(this.transform.position, touch.deltaPosition, lerp * Time.deltaTime); //new Vector3(transform.position.x + touch.deltaPosition.x * speed * Time.deltaTime, transform.position.y + touch.deltaPosition.y * speed * Time.deltaTime, 0);
+                        this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(screenToWorld.x, screenToWorld.y ,0), Touchspeed * Time.deltaTime); //Vector3.LerpUnclamped(this.transform.position, touch.deltaPosition, lerp * Time.deltaTime); //new Vector3(transform.position.x + touch.deltaPosition.x * speed * Time.deltaTime, transform.position.y + touch.deltaPosition.y * speed * Time.deltaTime, 0);
+                    }
+                    if (currentSpeed > maxSpeed)
+                    {
+                        rigidbody2d.velocity = new Vector2(maxSpeed, maxSpeed);
                     }
                 }
 
                 else
                 {
-                    rigidbody2.velocity = Vector3.zero;
+                    rigidbody2d.velocity = Vector2.zero;
                 }
 
                 break;
@@ -53,26 +65,31 @@ public class Move : MonoBehaviour,IinputProvider
                     Vector3 screenToWorld = Camera.main.ScreenToWorldPoint(touch.position);
                     if (touch.phase == TouchPhase.Began)
                     {
-                        this.gameObject.transform.position = new Vector3(screenToWorld.x, screenToWorld.y, 0);
+                        this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(screenToWorld.x, screenToWorld.y, 0),(10 * Touchspeed) * Time.deltaTime);
                     }
                    
                     if (touch.phase == TouchPhase.Moved)
                     {
-                        this.gameObject.transform.position = Vector3.Lerp(this.transform.position, touch.deltaPosition + overTouch, lerp * Time.deltaTime); 
+                        currentSpeed = PlayerSpeed();
+                        this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(screenToWorld.x, screenToWorld.y + overTouch), Touchspeed * Time.deltaTime);
+                        if (currentSpeed > maxSpeed)
+                        {
+                            rigidbody2d.velocity = new Vector2(maxSpeed, maxSpeed);
+                        }
                     }
                     else
                     {
-                        rigidbody2.velocity = Vector3.zero;
+                        rigidbody2d.velocity = Vector2.zero;
                     }
                 }
 
                 break;
         }
-       
     }
 
     public float PlayerSpeed()
     {
-        return this.rigidbody2.velocity.magnitude;// return this.speed
+        this.currentSpeed = rigidbody2d.velocity.magnitude;
+        return this.currentSpeed;
     }
 }
