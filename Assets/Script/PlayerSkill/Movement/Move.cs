@@ -10,18 +10,21 @@ public class Move : MonoBehaviour,IinputProvider
     private Rigidbody2D rigidbody2d;
     private float overTouch = 0.5f;
     [Range(30,100)]public float Touchspeed;
-   
+
     #endregion
 
     #region inputmode
-
+    
     [System.NonSerialized] public int checkMovement = 0;
+    private VirtualJoystick virtualJoystick;
 
     #endregion
 
     #region speed
     private float currentSpeed;
     private float maxSpeed;
+
+    [Range(0,50)]public float JoystickSpeed;
     #endregion
 
     private void Awake()
@@ -81,6 +84,21 @@ public class Move : MonoBehaviour,IinputProvider
                     {
                         rigidbody2d.velocity = Vector2.zero;
                     }
+                }
+
+                break;
+
+            case 2:
+
+                virtualJoystick = GameObject.FindObjectOfType<VirtualJoystick>();
+                if(virtualJoystick.inputDir != Vector3.zero)
+                {
+                    this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + new Vector3(virtualJoystick.inputDir.x, virtualJoystick.inputDir.z, 0), JoystickSpeed * Time.deltaTime);
+                }
+
+                else
+                {
+                    rigidbody2d.velocity = Vector2.zero;
                 }
 
                 break;

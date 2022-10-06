@@ -8,9 +8,11 @@ public class ButtonsFunctions : MonoBehaviour
 {
     #region movementInput
 
-    public GameObject textInputMode;
+    [SerializeField]
+    private GameObject joystickImage;
     private string inputModeText;
-    private bool touchMode = false;
+    private float touchMode = 0f;
+    public GameObject textInputMode;
 
     #endregion
 
@@ -27,18 +29,28 @@ public class ButtonsFunctions : MonoBehaviour
 
     public void ChangeInputMoveMode()
     {
-        if (!touchMode)
+        if (touchMode == 0)
         {
-            touchMode = true;
+            joystickImage.SetActive(false);
+            touchMode = 1;
             inputModeText = "TouchOverFollow";
             textInputMode.GetComponent<Text>().text = inputModeText;
             move.checkMovement = 1;
 
         }
-        else
-        { 
-            touchMode = false;
+        else if(touchMode == 1)
+        {
+            joystickImage.SetActive(true);
+            touchMode = 2;
             inputModeText = "TouchFollow";
+            textInputMode.GetComponent<Text>().text = inputModeText;
+            move.checkMovement = 2;
+        }
+        else if (touchMode == 2)
+        {
+            joystickImage.SetActive(false);
+            touchMode = 0;
+            inputModeText = "TouchJoystick";
             textInputMode.GetComponent<Text>().text = inputModeText;
             move.checkMovement = 0;
         }

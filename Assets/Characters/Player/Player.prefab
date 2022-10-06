@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1767118793623522122}
   - component: {fileID: 1767118793623522125}
-  - component: {fileID: 1767118793623522123}
-  - component: {fileID: 1767118793623522120}
   - component: {fileID: 1753811094}
+  - component: {fileID: 1767118793623522123}
+  - component: {fileID: 555420467}
+  - component: {fileID: 1767118793623522120}
   - component: {fileID: 5051840645599949275}
   - component: {fileID: 2010581496}
   m_Layer: 0
@@ -88,6 +89,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1753811094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767118793623522124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a4c7953771e43f2a8d1c234582d9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHp: 10
+  test: 0
 --- !u!114 &1767118793623522123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +115,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb0d867bd3dd4764bd985f8cfe8ca60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Touchspeed: 50
+  Touchspeed: 60
+  JoystickSpeed: 15
+--- !u!114 &555420467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767118793623522124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74503a849bed439fa342f7433b1936a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpTime: 2
+  jumpIncreaseMovementSpeed: 5
+  jumpLerpTime: 5
+  maxScaleX: 3
+  test: 0
 --- !u!114 &1767118793623522120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,20 +150,6 @@ MonoBehaviour:
   ProjectileSpeed: 15
   projectile_Prefab: {fileID: 1526211757461331351, guid: 0d92d702842534d99af36ff2a8dc9d75, type: 3}
   shootingSource: {fileID: 1767118794986933355}
---- !u!114 &1753811094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767118793623522124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06a4c7953771e43f2a8d1c234582d9f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHp: 10
-  test: 0
 --- !u!61 &5051840645599949275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -174,7 +193,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 1
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4

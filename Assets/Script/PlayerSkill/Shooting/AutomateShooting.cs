@@ -10,7 +10,7 @@ public class AutomateShooting : MonoBehaviour
 
     public float projectileSpawnRate; // upgradable
 
-    public float ProjectileSpeed; // upgradable
+    [Range(0,50)]public float ProjectileSpeed; // upgradable
 
     #endregion
 
