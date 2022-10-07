@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour,IDamage
 {
+    [SerializeField]
+    private float OnCollDamage;
+    [SerializeField]
+    private float invincibleFramesDuration;
     public float playerHp;
     [System.NonSerialized] public bool isHitten;
     [System.NonSerialized] public bool OstageisRunningAway;
 
-    #region test
-    public bool test;
-
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (test)
+        if(collision.CompareTag("Enemy") || collision.CompareTag("Obstacle") || collision.CompareTag("Boss"))
         {
-            ITakeDamage(1);
-            test = false;
+            ITakeDamage(OnCollDamage);
         }
     }
-    #endregion
 
     public void ITakeDamage(float damage)
     {
         this.playerHp = this.playerHp - damage;
         this.isHitten = true;
+        InvincibilityFrames();
     }
 
     public bool MakeOstagesRun()
@@ -38,5 +38,16 @@ public class PlayerHealth : MonoBehaviour,IDamage
         {
             return false;
         }
+    }
+    public void InvincibilityFrames()
+    {
+        this.gameObject.layer = LayerMask.NameToLayer("InvincibilityFrames");
+        StartCoroutine(invincibilityFramesTime());
+    }
+
+    private IEnumerator invincibilityFramesTime()
+    {
+        yield return new WaitForSeconds(invincibleFramesDuration);
+        this.gameObject.layer = LayerMask.NameToLayer("Default");
     }
 }

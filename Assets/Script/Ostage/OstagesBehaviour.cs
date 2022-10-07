@@ -15,7 +15,7 @@ public class OstagesBehaviour : MonoBehaviour,IOstagePointsRun
     private float ostagesRunAwaySpeed;
     [SerializeField]
     private float ostagesFollowSpeed;
-    private float treesholdPointRun;
+    private float treesholdPointRun = 0.5f;
     private bool MustRunAway;
     private bool canChangePath = true;
     private int randomPointRun;

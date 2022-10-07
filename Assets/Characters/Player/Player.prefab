@@ -101,8 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a4c7953771e43f2a8d1c234582d9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnCollDamage: 1
+  invincibleFramesDuration: 2
   playerHp: 10
-  test: 0
 --- !u!114 &1767118793623522123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +194,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4

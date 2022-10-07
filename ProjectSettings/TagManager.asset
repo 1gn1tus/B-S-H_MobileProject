@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Boss
-  - Wall
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -14,13 +14,13 @@ TagManager:
   - 
   - Water
   - UI
+  - Enemy
+  - Boss
+  - Obstacle
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - InvincibilityFrames
+  - NoCollision
+  - Indistructible
   - 
   - 
   - 
