@@ -21,8 +21,8 @@ TagManager:
   - InvincibilityFrames
   - NoCollision
   - Indistructible
-  - 
-  - 
+  - NoPlayerCollision
+  - Player
   - 
   - 
   - 
