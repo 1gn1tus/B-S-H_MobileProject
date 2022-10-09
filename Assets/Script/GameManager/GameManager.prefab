@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9219294569031354626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9219294569031354639}
+  - component: {fileID: 9219294569031354636}
+  - component: {fileID: 9219294569031354637}
+  - component: {fileID: 9219294569031354638}
+  - component: {fileID: 1747951597}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9219294569031354639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219294569031354626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9219294569031354636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219294569031354626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4c2c3bb3a644973b914b2375b0b96a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreConversion: 2
+  currentLevel: 0
+--- !u!114 &9219294569031354637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219294569031354626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59eaa463eb31d45a4b87d469a090bd86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isThisAColorLevel: 1
+--- !u!114 &9219294569031354638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219294569031354626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ee0324f57db4cb996a51119b6d5fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFlipperLevel: 1
+  maxBallToRespawn: 3
+  flipperObject: {fileID: 8808525562327231263, guid: 0efcb1a185a9540639981740118d6cc0, type: 3}
+  shootingSource: {fileID: 0}
+  ball: {fileID: 2294235405853004124, guid: b1759d7a42d894158a37a5dbc842648f, type: 3}
+--- !u!114 &1747951597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219294569031354626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7ea05258c1a4f14af324a7a2be484c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FrameRateDesidered: 60

@@ -363,27 +363,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7129518545815802566, guid: 922da6fe3fe5e480ea4c1406b36ae039, type: 3}
       propertyPath: m_Name
-      value: BakcGround test
-      objectReference: {fileID: 0}
-    - target: {fileID: 7129518545815802566, guid: 922da6fe3fe5e480ea4c1406b36ae039, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7129518545815802616, guid: 922da6fe3fe5e480ea4c1406b36ae039, type: 3}
-      propertyPath: m_DrawMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7129518545815802618, guid: 922da6fe3fe5e480ea4c1406b36ae039, type: 3}
-      propertyPath: m_Size.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7129518545815802618, guid: 922da6fe3fe5e480ea4c1406b36ae039, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7129518545815802618, guid: 922da6fe3fe5e480ea4c1406b36ae039, type: 3}
-      propertyPath: m_SpriteTilingProperty.drawMode
-      value: 0
+      value: BackGround test
       objectReference: {fileID: 0}
     - target: {fileID: 7129518545815802619, guid: 922da6fe3fe5e480ea4c1406b36ae039, type: 3}
       propertyPath: m_RootOrder
