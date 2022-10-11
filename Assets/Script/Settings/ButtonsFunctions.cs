@@ -30,7 +30,7 @@ public class ButtonsFunctions : MonoBehaviour
 
     public void ChangeInputMoveMode()
     {
-        if (gameM.GetComponent<ScreenOrientation>().buttonsInputSettings)
+        if (gameM.GetComponent<ScreenOrientedInGame>().buttonsInputSettings)
         {
             if (touchMode == 0)
             {
@@ -57,14 +57,14 @@ public class ButtonsFunctions : MonoBehaviour
                 textInputMode.GetComponent<Text>().text = inputModeText;
                 move.checkMovement = 0;
             }
-        }
-        else
-        {
-            joystickImage.SetActive(false);
-            touchMode = 0;
-            inputModeText = "TouchFollow";
-            textInputMode.GetComponent<Text>().text = inputModeText;
-            move.checkMovement = 0;
+            }
+            else
+            {
+                joystickImage.SetActive(false);
+                touchMode = 0;
+                inputModeText = "TouchFollow";
+                textInputMode.GetComponent<Text>().text = inputModeText;
+                move.checkMovement = 0;
+            }
         }
     }
-}

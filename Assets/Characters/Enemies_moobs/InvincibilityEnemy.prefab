@@ -101,6 +101,7 @@ MonoBehaviour:
   InvulnerabilityrotationSpeed: 50
   enemyBarrierGameObject: {fileID: 4559054736208611374, guid: a46d284590664454488d795ee7deb142, type: 3}
   enemyBarrierSize: 3.5
+  damageOnCollision: 1
 --- !u!61 &4693417019477489047
 BoxCollider2D:
   m_ObjectHideFlags: 0

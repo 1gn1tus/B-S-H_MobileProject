@@ -360,6 +360,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &789384051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9219294569031354626, guid: 5dd470feccdc54c13876bd624a35673f, type: 3}
+  m_PrefabInstance: {fileID: 9219294569657749573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &789384058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789384051}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6e80ee7c10244619cbc8c7b11c9d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingSource: {fileID: 1767118794797248514}
+  gravityIntensity: 1
+  jumpIntensity: 5
+  gravityMultiplier: 30
 --- !u!114 &902412122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,6 +1058,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2880328904700860634, guid: 5dd470feccdc54c13876bd624a35673f, type: 3}
+      propertyPath: isOrizzontalOriented
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9219294569031354626, guid: 5dd470feccdc54c13876bd624a35673f, type: 3}
       propertyPath: m_Name
       value: GameManager
