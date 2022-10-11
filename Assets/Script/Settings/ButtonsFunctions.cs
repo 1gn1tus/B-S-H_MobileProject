@@ -17,7 +17,7 @@ public class ButtonsFunctions : MonoBehaviour
     #endregion
 
     #region ref
-
+    private GameObject gameM;
     private Move move;
 
     #endregion
@@ -25,32 +25,44 @@ public class ButtonsFunctions : MonoBehaviour
     private void Start()
     {
         move = GameObject.FindObjectOfType<Move>();
+        gameM = GameObject.FindObjectOfType<FrameRate>().gameObject;
     }
 
     public void ChangeInputMoveMode()
     {
-        if (touchMode == 0)
+        if (gameM.GetComponent<ScreenOrientation>().buttonsInputSettings)
         {
-            joystickImage.SetActive(false);
-            touchMode = 1;
-            inputModeText = "TouchOverFollow";
-            textInputMode.GetComponent<Text>().text = inputModeText;
-            move.checkMovement = 1;
+            if (touchMode == 0)
+            {
+                joystickImage.SetActive(false);
+                touchMode = 1;
+                inputModeText = "TouchOverFollow";
+                textInputMode.GetComponent<Text>().text = inputModeText;
+                move.checkMovement = 1;
 
+            }
+            else if (touchMode == 1)
+            {
+                joystickImage.SetActive(true);
+                touchMode = 2;
+                inputModeText = "TouchFollow";
+                textInputMode.GetComponent<Text>().text = inputModeText;
+                move.checkMovement = 2;
+            }
+            else if (touchMode == 2)
+            {
+                joystickImage.SetActive(false);
+                touchMode = 0;
+                inputModeText = "TouchJoystick";
+                textInputMode.GetComponent<Text>().text = inputModeText;
+                move.checkMovement = 0;
+            }
         }
-        else if(touchMode == 1)
-        {
-            joystickImage.SetActive(true);
-            touchMode = 2;
-            inputModeText = "TouchFollow";
-            textInputMode.GetComponent<Text>().text = inputModeText;
-            move.checkMovement = 2;
-        }
-        else if (touchMode == 2)
+        else
         {
             joystickImage.SetActive(false);
             touchMode = 0;
-            inputModeText = "TouchJoystick";
+            inputModeText = "TouchFollow";
             textInputMode.GetComponent<Text>().text = inputModeText;
             move.checkMovement = 0;
         }

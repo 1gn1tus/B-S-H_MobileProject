@@ -8,6 +8,8 @@ public class AutomateShooting : MonoBehaviour
 
     private bool canSpawn = true;
 
+    [System.NonSerialized] public bool projectileDirOrizzontal;
+
     public float projectileSpawnRate; // upgradable
 
     [Range(0,50)]public float ProjectileSpeed; // upgradable

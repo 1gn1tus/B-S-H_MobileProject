@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ScreenOrientation : MonoBehaviour
 {
-    public bool isOrizzontalOriented;
     private GameObject gameManager;
+    [System.NonSerialized] public bool buttonsInputSettings = true;
+    public bool isOrizzontalOriented;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class ScreenOrientation : MonoBehaviour
         {
             Screen.orientation = UnityEngine.ScreenOrientation.LandscapeRight;
             gameManager.GetComponent<GravityManager>().enabled = true;
+            buttonsInputSettings = false;
 
         }
     }

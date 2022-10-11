@@ -28,7 +28,14 @@ public class Projectiles : MonoBehaviour
 
     void Update()
     {
-        this.transform.position = this.transform.position + Vector3.up * Time.deltaTime * automateShooting.ProjectileSpeed;
+        if (!automateShooting.projectileDirOrizzontal)
+        {
+            this.transform.position = this.transform.position + Vector3.up * Time.deltaTime * automateShooting.ProjectileSpeed;
+        }
+        else
+        {
+            this.transform.position = this.transform.position + Vector3.right * Time.deltaTime * automateShooting.ProjectileSpeed;
+        }   
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
