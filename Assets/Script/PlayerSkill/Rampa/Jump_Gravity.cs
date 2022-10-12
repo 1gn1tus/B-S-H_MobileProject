@@ -6,14 +6,17 @@ public class Jump_Gravity : MonoBehaviour
 {
     #region jumpGravity prop
 
-    public float jumpForce;
+    private bool canJump = true;
+    [System.NonSerialized]public float jumpTime;
+    [System.NonSerialized]public float jumpHeight;
+    private bool resetGravity = true;
+    private bool resetAntiGravity = false;
 
     #endregion
 
     #region ref
 
     private GameObject gameM;
-    private GameObject player;
 
     #endregion
 
@@ -21,7 +24,6 @@ public class Jump_Gravity : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         gameM = GameObject.FindObjectOfType<GravityManager>().gameObject;
     }
 
@@ -31,25 +33,58 @@ public class Jump_Gravity : MonoBehaviour
         {
             if(gameM.GetComponent<GravityManager>().IsGravityFlipped == false)
             {
-                JumpGravity();
+                if (canJump)
+                {
+                    JumpGravity();
+                }
             }
 
             else
             {
-                JumpAntiGravity();
+                if (canJump)
+                {
+                    JumpAntiGravity();
+                }
             }
            
             test = false;
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            canJump = true;
+            this.gameObject.layer = LayerMask.NameToLayer("Default");
+            if (resetGravity)
+            {
+                this.GetComponent<Rigidbody2D>().gravityScale = 1;
+                resetGravity = false;
+            }
+            else if(resetAntiGravity)
+            {
+                resetAntiGravity = false;
+                this.GetComponent<Rigidbody2D>().gravityScale = -1;
+            }
+        }
+    }
+
     public void JumpGravity()
     {
-        player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce * Time.deltaTime,ForceMode2D.Impulse);
+        this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + new Vector3(0, jumpHeight, 0), jumpTime * Time.deltaTime);
+        canJump = false;
+        this.GetComponent<Rigidbody2D>().gravityScale = 15;
+        this.gameObject.layer = LayerMask.NameToLayer("NoPlayerCollision");
+        resetGravity = true;
     }
 
     public void JumpAntiGravity()
     {
-        player.GetComponent<Rigidbody2D>().AddForce(Vector2.down * jumpForce * Time.deltaTime,ForceMode2D.Impulse);
+        this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + new Vector3(0, -jumpHeight, 0), jumpTime * Time.deltaTime);
+        canJump = false;
+        this.GetComponent<Rigidbody2D>().gravityScale = -15;
+        this.gameObject.layer = LayerMask.NameToLayer("NoPlayerCollision");
+        resetAntiGravity = true;
     }
 }

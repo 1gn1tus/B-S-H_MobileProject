@@ -9,6 +9,7 @@ public class MoveVertical : MonoBehaviour
     private Touch touch;
     private Rigidbody2D rigidbody2d;
     [Range(30, 100)] public float Touchspeed;
+    [System.NonSerialized] public int CheckMoveVertical;
 
     #endregion
 
@@ -26,27 +27,60 @@ public class MoveVertical : MonoBehaviour
     }
     private void Update()
     {
-       
-       if (Input.touchCount > 0)
-       {
-         currentSpeed = PlayerSpeed();
-         touch = Input.GetTouch(0);
-         Vector3 screenToWorld = Camera.main.ScreenToWorldPoint(touch.position);
+       switch (CheckMoveVertical)
+        {
+            case 0:
+                if (Input.touchCount > 0)
+                {
+                    currentSpeed = PlayerSpeed();
+                    touch = Input.GetTouch(0);
+                    Vector3 screenToWorld = Camera.main.ScreenToWorldPoint(touch.position);
 
-         if (touch.phase == TouchPhase.Moved)
-         {
-           this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(screenToWorld.x, this.transform.position.y, 0), Touchspeed * Time.deltaTime); //Vector3.LerpUnclamped(this.transform.position, touch.deltaPosition, lerp * Time.deltaTime); //new Vector3(transform.position.x + touch.deltaPosition.x * speed * Time.deltaTime, transform.position.y + touch.deltaPosition.y * speed * Time.deltaTime, 0);
-         }
+                    if (touch.phase == TouchPhase.Moved)
+                    {
+                        this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(screenToWorld.x, this.transform.position.y, 0), Touchspeed * Time.deltaTime); //Vector3.LerpUnclamped(this.transform.position, touch.deltaPosition, lerp * Time.deltaTime); //new Vector3(transform.position.x + touch.deltaPosition.x * speed * Time.deltaTime, transform.position.y + touch.deltaPosition.y * speed * Time.deltaTime, 0);
+                    }
 
-         if (currentSpeed > maxSpeed)
-         {
-           rigidbody2d.velocity = new Vector2(maxSpeed, maxSpeed);
-         }
-       }
-         else
-         {
-           rigidbody2d.velocity = Vector2.zero;
-         }         
+                    if (currentSpeed > maxSpeed)
+                    {
+                        rigidbody2d.velocity = new Vector2(maxSpeed, maxSpeed);
+                    }
+                }
+                else
+                {
+                    rigidbody2d.velocity = Vector2.zero;
+                }
+                break;
+
+            case 1:
+                if (Input.touchCount > 0)
+                {
+                    currentSpeed = PlayerSpeed();
+                    touch = Input.GetTouch(0);
+                    Vector3 screenToWorld = Camera.main.ScreenToWorldPoint(touch.position);
+
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(screenToWorld.x,this.transform.position.y, 0), (10 * Touchspeed) * Time.deltaTime);
+                    }
+
+                    if (touch.phase == TouchPhase.Moved)
+                    {
+                        this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(screenToWorld.x, this.transform.position.y, 0), Touchspeed * Time.deltaTime); //Vector3.LerpUnclamped(this.transform.position, touch.deltaPosition, lerp * Time.deltaTime); //new Vector3(transform.position.x + touch.deltaPosition.x * speed * Time.deltaTime, transform.position.y + touch.deltaPosition.y * speed * Time.deltaTime, 0);
+                    }
+
+                    if (currentSpeed > maxSpeed)
+                    {
+                        rigidbody2d.velocity = new Vector2(maxSpeed, maxSpeed);
+                    }
+                }
+                else
+                {
+                    rigidbody2d.velocity = Vector2.zero;
+                }
+                break;
+
+        }
     }
 
     public float PlayerSpeed()

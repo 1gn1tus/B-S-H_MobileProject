@@ -118,6 +118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Touchspeed: 60
   JoystickSpeed: 15
+  testForPc: 0
+  pcSpeed: 10
 --- !u!114 &555420467
 MonoBehaviour:
   m_ObjectHideFlags: 0

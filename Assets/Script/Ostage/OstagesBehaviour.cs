@@ -35,11 +35,13 @@ public class OstagesBehaviour : MonoBehaviour,IOstagePointsRun
     #endregion
 
     private PlayerHealth playerHp;
+    private ScreenOrientedInGame screenOrientedInGame;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerHp = GameObject.FindObjectOfType<PlayerHealth>();
+        screenOrientedInGame = GameObject.FindObjectOfType<ScreenOrientedInGame>();
     }
 
     private void Update()
@@ -125,7 +127,15 @@ public class OstagesBehaviour : MonoBehaviour,IOstagePointsRun
     {
         if (canFollowPlayer)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position,new Vector3(player.transform.position.x, player.transform.position.y - offSetOstage, 0), ostagesFollowSpeed * Time.deltaTime);
+            if(screenOrientedInGame.isOrizzontalOriented == false)
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(player.transform.position.x, player.transform.position.y - offSetOstage, 0), ostagesFollowSpeed * Time.deltaTime);
+            }
+
+            else
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(player.transform.position.x - offSetOstage, player.transform.position.y, 0), ostagesFollowSpeed * Time.deltaTime);
+            }
         }
     }
 

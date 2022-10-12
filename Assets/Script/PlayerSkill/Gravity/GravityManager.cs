@@ -10,7 +10,8 @@ public class GravityManager : MonoBehaviour
     private GameObject player;
     [System.NonSerialized] public bool IsGravityFlipped;
     public float gravityIntensity;
-    public float jumpIntensity;
+    public float jumpH;
+    public float JumpT;
     public float gravityMultiplier;
     
     #endregion
@@ -19,7 +20,7 @@ public class GravityManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
-    // Start is called before the first frame update
+  
     void Start()
     {
         player.GetComponent<Move>().enabled = false;
@@ -27,14 +28,14 @@ public class GravityManager : MonoBehaviour
         player.GetComponent<MoveVertical>().Touchspeed = 60;
         player.GetComponent<JumpBehaviour>().enabled = false;
         player.AddComponent<Jump_Gravity>();
-        player.GetComponent<Jump_Gravity>().jumpForce = jumpIntensity;
+        player.GetComponent<Jump_Gravity>().jumpTime = JumpT;
+        player.GetComponent<Jump_Gravity>().jumpHeight = jumpH;
         player.AddComponent<GravityFlipper>();
         player.GetComponent<GravityFlipper>().gravityMultiplier = this.gravityMultiplier;
         player.GetComponent<AutomateShooting>().projectileDirOrizzontal = true;
         player.GetComponent<Rigidbody2D>().gravityScale = gravityIntensity;
     }
 
-    // Update is called once per frame
     void Update()
     {
         shootingSource.transform.position = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y, 0);

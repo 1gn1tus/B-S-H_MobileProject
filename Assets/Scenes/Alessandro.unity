@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7ea05258c1a4f14af324a7a2be484c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FrameRateDesidered: 30
+  FrameRateDesidered: 60
   qualityType: 1
 --- !u!1 &948268057
 GameObject:
@@ -510,7 +510,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSource: {fileID: 1279753149}
   gravityIntensity: 1
-  jumpIntensity: 1000
+  jumpH: 4
+  JumpT: 10
   gravityMultiplier: 30
 --- !u!1 &1760515258 stripped
 GameObject:
@@ -666,7 +667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1767118793623522122, guid: 35cf8d97c5f3047fc954621c8d60428a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.66
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1767118793623522122, guid: 35cf8d97c5f3047fc954621c8d60428a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -864,7 +865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3069682419200864682, guid: 321e5681d7b3c4d24b4ab5e1d9e61c2b, type: 3}
       propertyPath: m_Name
-      value: UI
+      value: UI_Horizontal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 321e5681d7b3c4d24b4ab5e1d9e61c2b, type: 3}
@@ -960,7 +961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120154942115851420, guid: 851046e07d2f544488df19e903e29a47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.65
+      value: -5.88
       objectReference: {fileID: 0}
     - target: {fileID: 6120154942115851420, guid: 851046e07d2f544488df19e903e29a47, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1108,7 +1109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7a06f1088745008bbc94e1ce4769f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrizzontalOriented: 1
+  isOrizzontalOriented: 0
 --- !u!4 &9219294569991608761
 Transform:
   m_ObjectHideFlags: 0

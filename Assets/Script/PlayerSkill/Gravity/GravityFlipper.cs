@@ -7,6 +7,7 @@ public class GravityFlipper : MonoBehaviour
     #region ref
 
     private GameObject player;
+    private GravityManager gravityM;
 
     #endregion
 
@@ -15,6 +16,7 @@ public class GravityFlipper : MonoBehaviour
 
     private void Awake()
     {
+        gravityM = GameObject.FindObjectOfType<GravityManager>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
     private void Update()
@@ -25,6 +27,7 @@ public class GravityFlipper : MonoBehaviour
             player.GetComponent<Rigidbody2D>().gravityScale = Mathf.Clamp(player.GetComponent<Rigidbody2D>().gravityScale, -30, 30);
             player.layer = LayerMask.NameToLayer("NoPlayerCollision");
             // spriteRenderer
+            gravityM.IsGravityFlipped =! gravityM.IsGravityFlipped;
             doOnce = false;
         }
     }

@@ -27,6 +27,9 @@ public class Move : MonoBehaviour,IinputProvider
     [Range(0,50)]public float JoystickSpeed;
     #endregion
 
+    public bool testForPc;
+    public float pcSpeed;
+
     private void Awake()
     {
         rigidbody2d = this.gameObject.GetComponent<Rigidbody2D>();
@@ -34,6 +37,26 @@ public class Move : MonoBehaviour,IinputProvider
     }
     private void Update()
     {
+        if (testForPc)
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                this.gameObject.transform.position += Vector3.up * pcSpeed * Time.deltaTime;
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                this.gameObject.transform.position += Vector3.left * pcSpeed * Time.deltaTime;
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                this.gameObject.transform.position += Vector3.down * pcSpeed * Time.deltaTime;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                this.gameObject.transform.position += Vector3.right * pcSpeed * Time.deltaTime;
+            }
+        }
+
         switch (checkMovement)
         {
             case 0:
