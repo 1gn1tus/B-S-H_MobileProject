@@ -19,7 +19,8 @@ public class ColorChange : MonoBehaviour,IColor
             colorChanger = collision.gameObject.GetComponent<CristalsColorChanger>();
             this.currntColor = colorChanger.colorToChangeInto;
             spriteRenderer.color = currentColor();
-            Destroy(collision.gameObject);
+            this.gameObject.GetComponent<Collider2D>().enabled = false;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 

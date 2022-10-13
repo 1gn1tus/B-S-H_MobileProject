@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(GravityManager))]
 public class ScreenOrientedInGame : MonoBehaviour
 {
     private GameObject gameManager;

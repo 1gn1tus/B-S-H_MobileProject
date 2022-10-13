@@ -17,7 +17,8 @@ public class Collectibles : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collectiblesManager.IncreaseTokenCollectibles(value);;
-            Destroy(this.gameObject);
+            this.gameObject.GetComponent<Collider2D>().enabled = false;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }

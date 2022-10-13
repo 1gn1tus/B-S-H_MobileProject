@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class CollectiblesTemporary : MonoBehaviour
+public class SpeculareCollectibles : MonoBehaviour
 {
-    public float collectibleValue;
+    public float collectibleValue = 1;
 
     private CollectiblesManager collectiblesManager;
 
@@ -18,10 +18,9 @@ public class CollectiblesTemporary : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collectiblesManager.IncreaseCollectiblesTemporary(this.collectibleValue);
+            collectiblesManager.DecreaseCollectiblesTemporary(this.collectibleValue);
             collectiblesManager.GetCollectiblesReward();
-            this.gameObject.GetComponent<Collider2D>().enabled = false;
-            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(this.gameObject);
         }
     }
 }

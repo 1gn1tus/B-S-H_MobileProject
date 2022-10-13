@@ -19,15 +19,18 @@ public class ButtonsFunctions : MonoBehaviour
 
     #region ref
     private GameObject gameM;
-    private Move move;
     private GameObject player;
+
+    private Move move;
+    private SpeculareMove speculareMove;
     #endregion
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        move = GameObject.FindObjectOfType<Move>();
         gameM = GameObject.FindObjectOfType<FrameRate>().gameObject;
+
+        move = GameObject.FindObjectOfType<Move>();
     }
 
     public void ChangeInputMoveMode()
@@ -42,6 +45,12 @@ public class ButtonsFunctions : MonoBehaviour
                 textInputMode.GetComponent<Text>().text = inputModeText;
                 move.checkMovement = 1;
 
+                if (gameM.GetComponent<SpeculareManager>().isThisLevelSpeculare)
+                {
+                    speculareMove = player.GetComponent<SpeculareMove>();
+                    speculareMove.checkMovementSpeculare = 1;
+                }
+
             }
             else if (touchMode == 1)
             {
@@ -50,6 +59,12 @@ public class ButtonsFunctions : MonoBehaviour
                 inputModeText = "TouchFollow";
                 textInputMode.GetComponent<Text>().text = inputModeText;
                 move.checkMovement = 2;
+
+                if (gameM.GetComponent<SpeculareManager>().isThisLevelSpeculare)
+                {
+                    speculareMove = player.GetComponent<SpeculareMove>();
+                    speculareMove.checkMovementSpeculare = 2;
+                }
             }
             else if (touchMode == 2)
             {
@@ -58,6 +73,12 @@ public class ButtonsFunctions : MonoBehaviour
                 inputModeText = "TouchJoystick";
                 textInputMode.GetComponent<Text>().text = inputModeText;
                 move.checkMovement = 0;
+
+                if (gameM.GetComponent<SpeculareManager>().isThisLevelSpeculare)
+                {
+                    speculareMove = player.GetComponent<SpeculareMove>();
+                    speculareMove.checkMovementSpeculare = 0;
+                }
             }
             }
             else

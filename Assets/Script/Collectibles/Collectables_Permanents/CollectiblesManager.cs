@@ -56,6 +56,11 @@ public class CollectiblesManager : MonoBehaviour,IScore
         this.TemporaryCollectiblesNumber += collectibleValue;
     }
 
+    public void DecreaseCollectiblesTemporary(float collectibleValue)
+    {
+        this.TemporaryCollectiblesNumber -= collectibleValue;
+    }
+
     public void CheckMaxScore(int level)
     {
         level = this.currentLevel;
