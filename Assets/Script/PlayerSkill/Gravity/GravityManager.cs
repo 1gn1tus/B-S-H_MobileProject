@@ -5,9 +5,13 @@ using UnityEngine;
 public class GravityManager : MonoBehaviour
 {
     #region ref
+    private GameObject player;
     [SerializeField]
     private GameObject shootingSource;
-    private GameObject player;
+    [SerializeField]
+    private GameObject shootingSourceVertical;
+    [Range(0, 200)] public float TouchspeedVerticalManager;
+
     [System.NonSerialized] public bool IsGravityFlipped;
     public float gravityIntensity;
     public float jumpH;
@@ -25,7 +29,8 @@ public class GravityManager : MonoBehaviour
     {
         player.GetComponent<Move>().enabled = false;
         player.AddComponent<MoveVertical>();
-        player.GetComponent<MoveVertical>().Touchspeed = 60;
+        player.GetComponent<MoveVertical>().TouchspeedVertical = this.TouchspeedVerticalManager;
+        player.GetComponent<MoveVertical>().JoystickSpeed = 15;
         player.GetComponent<JumpBehaviour>().enabled = false;
         player.AddComponent<Jump_Gravity>();
         player.GetComponent<Jump_Gravity>().jumpTime = JumpT;
@@ -34,10 +39,7 @@ public class GravityManager : MonoBehaviour
         player.GetComponent<GravityFlipper>().gravityMultiplier = this.gravityMultiplier;
         player.GetComponent<AutomateShooting>().projectileDirOrizzontal = true;
         player.GetComponent<Rigidbody2D>().gravityScale = gravityIntensity;
-    }
-
-    void Update()
-    {
-        shootingSource.transform.position = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y, 0);
+        shootingSource.SetActive(false);
+        shootingSourceVertical.SetActive(true);
     }
 }

@@ -26,7 +26,6 @@ public class ScreenOrientedInGame : MonoBehaviour
             Screen.orientation = ScreenOrientation.LandscapeRight;
             gameManager.GetComponent<GravityManager>().enabled = true;
             buttonsInputSettings = false;
-
         }
     }
 }

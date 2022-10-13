@@ -8,17 +8,25 @@ public class AutomateShooting : MonoBehaviour
 
     private bool canSpawn = true;
 
-    [System.NonSerialized] public bool projectileDirOrizzontal;
-
     public float projectileSpawnRate; // upgradable
 
     [Range(0,50)]public float ProjectileSpeed; // upgradable
 
+    [System.NonSerialized] public bool projectileDirOrizzontal;
+
     #endregion
+
+    #region gameObject
 
     public GameObject projectile_Prefab;
 
     public GameObject shootingSource;
+
+    public GameObject shootingSourceOrizzontal;
+
+    public GameObject projectileContainer;
+
+    #endregion
 
     private void Update()
     {
@@ -32,7 +40,16 @@ public class AutomateShooting : MonoBehaviour
     private IEnumerator ProjectileSpawn()
     {
         yield return new WaitForSeconds(projectileSpawnRate);
-        GameObject projectileObject = Instantiate(projectile_Prefab, shootingSource.transform.position, projectile_Prefab.transform.rotation,shootingSource.transform);
-        canSpawn = true;
+        if (!projectileDirOrizzontal)
+        {
+            Instantiate(projectile_Prefab, shootingSource.transform.position, projectile_Prefab.transform.rotation,projectileContainer.transform);
+            canSpawn = true;
+        }
+
+        else
+        {
+            Instantiate(projectile_Prefab, shootingSourceOrizzontal.transform.position, projectile_Prefab.transform.rotation,projectileContainer.transform);
+            canSpawn = true;
+        } 
      }
 }

@@ -9,12 +9,12 @@ public class Move : MonoBehaviour,IinputProvider
     private Touch touch;
     private Rigidbody2D rigidbody2d;
     private float overTouch = 0.5f;
-    [Range(30,100)]public float Touchspeed;
+    [Range(30, 100)] public float Touchspeed;
 
     #endregion
 
     #region inputmode
-    
+
     [System.NonSerialized] public int checkMovement = 0;
     private VirtualJoystick virtualJoystick;
 

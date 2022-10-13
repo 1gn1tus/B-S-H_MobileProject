@@ -4,31 +4,26 @@ using UnityEngine;
 
 public class SpeculareScore : MonoBehaviour
 {
-    [SerializeField]
-    private float scoreToSubtract;
-    [SerializeField]
-    private float timeToUploadScore;
-    [SerializeField]
-    private float StartScore;
+    public float StartScore;
+    [System.NonSerialized]
+    public float scoreToSubtract;
+    [System.NonSerialized]
+    public float timeToUploadScore;
 
-    public bool StopScore;
-
-    private void Update()
+    private void Start()
     {
-        if(StopScore == true)
-        {
-            StopAllCoroutines();
-        }
+        StartCoroutine(ScoreUpdates());
     }
 
-    private IEnumerator ScoreUpdates()
+    public IEnumerator ScoreUpdates()
     {
         yield return new WaitForSeconds(timeToUploadScore);
-        this.StartScore -= scoreToSubtract;
+        this.StartScore = this.StartScore - scoreToSubtract;
+        StartCoroutine(ScoreUpdates());
     }
 
-    public void RestartScore()
+    public void StopScore()
     {
-        this.StopScore = false;
+        StopAllCoroutines();
     }
 }

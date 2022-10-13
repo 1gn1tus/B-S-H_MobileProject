@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour,IDamage
 {
     [SerializeField]
     public float Hp;
+    public float enemyStopScore = 3f;
 
     public void ITakeDamage(float damage)
     {
@@ -16,7 +17,8 @@ public class EnemyHealth : MonoBehaviour,IDamage
     {
         if(this.Hp <= 0)
         {
-            Destroy(this.gameObject);
+            this.gameObject.GetComponent<Collider2D>().enabled = false;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }

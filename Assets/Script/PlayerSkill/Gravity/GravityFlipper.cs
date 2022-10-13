@@ -13,6 +13,7 @@ public class GravityFlipper : MonoBehaviour
 
     [Range(0,30)]public float gravityMultiplier;
     private bool doOnce = true;
+    private bool reDo = true;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class GravityFlipper : MonoBehaviour
             // spriteRenderer
             gravityM.IsGravityFlipped =! gravityM.IsGravityFlipped;
             doOnce = false;
+            reDo = false;
         }
     }
 
@@ -36,9 +38,20 @@ public class GravityFlipper : MonoBehaviour
     {
        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
        {
-          player.layer = LayerMask.NameToLayer("Default");
-          doOnce = true;
+          player.layer = LayerMask.NameToLayer("Player");
+          StartCoroutine(CanFlip());
        }
     }
+
+    private IEnumerator CanFlip()
+    {
+        if (!reDo)
+        {
+            yield return new WaitForSeconds(1f);
+            doOnce = true;
+            reDo = true;
+        }  
+    }
+
 }
         
