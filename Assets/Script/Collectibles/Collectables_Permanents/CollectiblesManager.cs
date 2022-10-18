@@ -24,7 +24,7 @@ public class CollectiblesManager : MonoBehaviour,IScore
 
     private void Awake()
     {
-        CollectibleSavedData CollectiblesData = new CollectibleSavedData();
+        SavedData CollectiblesData = new SavedData();
         CollectiblesData.Loading();
         CollectiblesData.LoadRewarded();
         collectiblesTokenQuantity = CollectiblesData.collectiblesNumber;
@@ -38,7 +38,7 @@ public class CollectiblesManager : MonoBehaviour,IScore
     public float IncreaseTokenCollectibles(float collectableValue)
     {
         this.collectiblesTokenQuantity += collectableValue;
-        CollectibleSavedData CollectiblesData = new CollectibleSavedData();
+        SavedData CollectiblesData = new SavedData();
         CollectiblesData.Saving();
         return this.collectiblesTokenQuantity;
     }
@@ -46,7 +46,7 @@ public class CollectiblesManager : MonoBehaviour,IScore
     public float DecreaseTokenCollectibles(float collectableValue)
     {
         this.collectiblesTokenQuantity -= collectableValue;
-        CollectibleSavedData CollectiblesData = new CollectibleSavedData();
+        SavedData CollectiblesData = new SavedData();
         CollectiblesData.Saving();
         return this.collectiblesTokenQuantity;
     }
@@ -70,7 +70,7 @@ public class CollectiblesManager : MonoBehaviour,IScore
                 if(TemporaryCollectiblesNumber > maxScores[0])
                 {
                     maxScores[0] = TemporaryCollectiblesNumber;
-                    CollectibleSavedData CollectiblesData = new CollectibleSavedData();
+                    SavedData CollectiblesData = new SavedData();
                     CollectiblesData.Saving();
                 }
                 break;
@@ -90,7 +90,7 @@ public class CollectiblesManager : MonoBehaviour,IScore
     public float GetCollectiblesReward()
     {
         this.collectiblesRewarded = this.collectiblesRewarded + (TemporaryCollectiblesNumber * ScoreConversion);
-        CollectibleSavedData CollectiblesData = new CollectibleSavedData();
+        SavedData CollectiblesData = new SavedData();
         CollectiblesData.SavingRewarded();
         return this.collectiblesRewarded;
     }

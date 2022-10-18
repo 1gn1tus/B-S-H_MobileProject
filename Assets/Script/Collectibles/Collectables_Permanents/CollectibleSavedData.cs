@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 
 [System.Serializable]
-public class CollectibleSavedData
+public class SavedData
 {
     private CollectiblesManager collectiblesManager;
     public float collectiblesNumber;
@@ -14,7 +14,7 @@ public class CollectibleSavedData
     #region Saving
     public void Saving()
     {
-        CollectibleSavedData data = new CollectibleSavedData();
+        SavedData data = new SavedData();
         collectiblesManager = GameObject.FindObjectOfType<CollectiblesManager>();
         data.collectiblesNumber = collectiblesManager.collectiblesTokenQuantity ; // creare l istanza della classe e cambiare le variabili come vogliamo  ATTENZIONE: non tutte le variabili sono salvabili
         switch (collectiblesManager.currentLevel)
@@ -39,7 +39,7 @@ public class CollectibleSavedData
         if (File.Exists(path))    // controlla se il file esiste
         {
             string json = File.ReadAllText(path);
-            CollectibleSavedData CollectiblesData = JsonUtility.FromJson<CollectibleSavedData>(json); // legge il testo e setta i cambiamenti salvati
+            SavedData CollectiblesData = JsonUtility.FromJson<SavedData>(json); // legge il testo e setta i cambiamenti salvati
 
             collectiblesNumber = CollectiblesData.collectiblesNumber; // qui noi settiamo la variabile che abbiamo salvato, in quanto nelle righe sopra cambiamo solo il file, non le istanze nel gioco
             maxScoreLV_0 = CollectiblesData.maxScoreLV_0;
@@ -49,7 +49,7 @@ public class CollectibleSavedData
 
     public void SavingRewarded()
     {
-        CollectibleSavedData data = new CollectibleSavedData();
+        SavedData data = new SavedData();
         collectiblesManager = GameObject.FindObjectOfType<CollectiblesManager>();
         data.collectiblesRewarded = collectiblesManager.collectiblesRewarded;
         string jsonRewarded = JsonUtility.ToJson(data);
@@ -63,7 +63,7 @@ public class CollectibleSavedData
         if (File.Exists(path))    
         {
             string jsonRewarded = File.ReadAllText(path);
-            CollectibleSavedData CollectiblesData = JsonUtility.FromJson<CollectibleSavedData>(jsonRewarded); // legge il testo e setta i cambiamenti salvati
+            SavedData CollectiblesData = JsonUtility.FromJson<SavedData>(jsonRewarded); // legge il testo e setta i cambiamenti salvati
             collectiblesRewarded = CollectiblesData.collectiblesRewarded;
           
         }

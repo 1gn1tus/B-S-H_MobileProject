@@ -6,26 +6,23 @@ public class BackGroundRewinder : MonoBehaviour
 {
     [SerializeField]
     public float speed;
+    [SerializeField]
+    private float RepetDistance;
     private Vector3 startPos;
-    private float boxywidt;
-
-    private void Awake()
-    {
-        boxywidt = this.GetComponent<BoxCollider2D>().size.x / 2;
-    }
-  
+    
     void Start()
     {
         startPos = this.transform.position;
+        Debug.Log(startPos.x - RepetDistance);
     }
 
     void Update()
     {
-        if (transform.position.x < (startPos.x - boxywidt))
+        if (this.transform.position.y < (startPos.x - RepetDistance))
         {
             this.transform.position = startPos;
         }
-        Debug.Log(startPos.x - boxywidt);
-        this.transform.Translate(Vector3.left * Time.deltaTime * speed);
+
+        this.transform.Translate(Vector3.down * Time.deltaTime * speed);
     }
 }
