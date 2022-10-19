@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField]
     private AudioSource LevelSong;
+    public AudioSource LevelSong_ToFadeIn;
 
     #region audiomixer
 
@@ -22,7 +23,7 @@ public class SoundManager : MonoBehaviour
     #region fading
 
     private bool fadeIn;
-    private bool fadeOut;
+    public bool FadingTransition;
 
     #endregion
 
@@ -42,25 +43,37 @@ public class SoundManager : MonoBehaviour
         SaveAudioSetting saveAudioSetting = new SaveAudioSetting();
         saveAudioSetting.Saving();*/
 
-        if (fadeIn)
+        if (FadingTransition)
         {
-
+            FadeMusic(LevelSong_ToFadeIn,this.LevelSong);
         }
     }
 
-    public void FadeMusic(AudioSource songFadeIn,AudioSource songFadeOut)
+    public void FadeMusic(AudioSource fadingInSong, AudioSource fadingOutSong)
     {
-        fadeIn = true;
-    }
+        if (!fadeIn)
+        {
+            fadingInSong.volume = 0;
+            fadingOutSong.volume -= Time.deltaTime;
 
-    public void FadeInMusic(AudioClip fadingInSong)
-    {
-       
-    }
+            if (fadingOutSong.volume <= 0)
+            {
+                fadeIn = true;
+                fadingOutSong.Stop();
+            }
+        }
 
-    public void FadeOutMusic(AudioClip fadingOutSong)
-    {
+        else
+        {
+            fadingInSong.Play();
+            fadingInSong.volume += Time.deltaTime;
 
+            if (fadingInSong.volume >= 1)
+            {
+                fadeIn = false;
+                FadingTransition = false;
+            }
+        }    
     }
 
     public void MasterVolumeSetFloatFunction()
