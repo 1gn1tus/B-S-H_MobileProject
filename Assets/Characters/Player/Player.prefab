@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1767118793623522124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.65, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 1767118794986933352}
   - {fileID: 3116855927681465739}
@@ -104,7 +104,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnCollDamage: 1
   invincibleFramesDuration: 2
-  playerHp: 10
+  gameOverPanel: {fileID: 3650639707725349959, guid: 31e9a7303894240aaa6259fcb7ffe2e6, type: 3}
+  playerHp: 5
+  MyShake: {fileID: 11400000, guid: cf23cadbac04b401f899ddfd9b6d2188, type: 2}
+  timeToRestartMoving: 0.5
 --- !u!114 &1767118793623522123
 MonoBehaviour:
   m_ObjectHideFlags: 0
