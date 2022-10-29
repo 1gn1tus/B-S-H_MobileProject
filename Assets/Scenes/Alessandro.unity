@@ -625,6 +625,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FrameRateDesidered: 30
   qualityType: 0
+--- !u!1 &744114189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 227919458467277878, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
+  m_PrefabInstance: {fileID: 227919457546088613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &948268057
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +793,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartingPos: {x: -8.69, y: 12, z: 0}
   TimeToStartBehaviour: 2
+--- !u!1 &1122182839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 227919457705176803, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
+  m_PrefabInstance: {fileID: 227919457546088613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1260907743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4437952780788952344, guid: 31985d0ffc5c6467ab4ac4e8f603b63c, type: 3}
@@ -1409,6 +1419,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 227919457705176813, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227919457705176813, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227919457705176813, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227919457705176813, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227919458467277872, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227919458467277872, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227919458467277872, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227919458467277872, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c04a26241d947efaa80f27f0ac32b6, type: 3}
 --- !u!1001 &748843900136140667
@@ -1900,6 +1942,8 @@ GameObject:
   - component: {fileID: 9219294569991608759}
   - component: {fileID: 9219294569991608765}
   - component: {fileID: 9219294569991608766}
+  - component: {fileID: 9219294569991608767}
+  - component: {fileID: 9219294569991608768}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2058,3 +2102,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyDefeatedAchievement: 1
   AchievementEnemyFirstTime: 0
+--- !u!114 &9219294569991608767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219294569991608756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c976df774747648ad8bab38e6b320066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9219294569991608768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219294569991608756}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ee5c20c3917643f58931ca7394693f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fadingcolor: {r: 1, g: 1, b: 1, a: 1}
+  backGrounds:
+  - {fileID: 1122182839}
+  - {fileID: 744114189}
+  FadeVelocity: 0.0001
+  StartLighting: 0

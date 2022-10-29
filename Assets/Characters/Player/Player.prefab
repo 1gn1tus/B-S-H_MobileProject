@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1767118793623522123}
   - component: {fileID: 555420467}
   - component: {fileID: 1767118793623522120}
+  - component: {fileID: 945183279}
   - component: {fileID: 5051840645599949275}
   - component: {fileID: 2010581496}
   m_Layer: 14
@@ -107,7 +108,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 3650639707725349959, guid: 31e9a7303894240aaa6259fcb7ffe2e6, type: 3}
   playerHp: 5
   MyShake: {fileID: 11400000, guid: cf23cadbac04b401f899ddfd9b6d2188, type: 2}
-  timeToRestartMoving: 0.5
+  timeToRestartMoving: 0
 --- !u!114 &1767118793623522123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +160,20 @@ MonoBehaviour:
   shootingSource: {fileID: 1767118794986933355}
   shootingSourceOrizzontal: {fileID: 5293948609480390135}
   projectileContainer: {fileID: 0}
+--- !u!114 &945183279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767118793623522124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee091a76d077432cbad9b80bf479448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDown: 2
+  canShootAgain: 0.3
 --- !u!61 &5051840645599949275
 BoxCollider2D:
   m_ObjectHideFlags: 0
